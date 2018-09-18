@@ -1,0 +1,101 @@
+{
+   "rows":{
+      "1": "drop",
+      "2": "drop"
+   },
+
+   "has_header_row": true,
+
+   "header_rows": {
+      "A": {
+         "action": "replace",
+         "with": "Employee SSN"
+      },
+      "C": {
+         "action": "replace",
+         "with": "EID"
+      },
+      "W": {
+         "action": "replace",
+         "with": "Termination Date"
+      }
+   },
+  
+   "columns":{
+      "A": "unique",
+      "B": "drop",
+      "M": {
+         "action": "operation",
+         "function": "validate_phone_number"
+      },
+      "N": {
+         "action": "replace",
+         "with": {
+            "Weekly": "52",
+            "Semimonthly": "24",
+            "Monthly (4.33 Weeks)": "12"
+         }
+      },
+      "P": "clear",
+      "R": {
+         "action": "replace",
+         "based_on": "N",
+         "with": {
+            "24": "Semi-Monthly",
+            "52": "Weekly",
+            "12": "Retirees"
+         }
+      },
+      "S": {
+         "action": "cutpaste",
+         "from": "R"
+      },
+      "U": "clear",
+      "V": {
+         "action": "operation",
+         "function": "set_hire_date"
+      },
+      "X": "drop",
+      "Y": {
+         "action": "replace",
+         "with": {
+            "Active": "A",
+            "Terminated": "T",
+            "Leave of Absence": "L",
+            "Inactive": "I",
+            "Deceased": "D"
+         }
+      },
+      "Z": "clear",
+      "AB": "drop",
+      "AC": "drop",
+      "AD": "drop",
+      "AE": "drop",
+      "AF": "drop"
+   },
+   "new_columns": {
+      "1": {
+         "header_title": "Job Class",
+         "action": "replace",
+         "based_on": "S",
+         "with": {
+            "J67": "Hourly",
+            "J69": "Hourly",
+            "SG6": "Salary Non-Exempt",
+            "J66": "Salary Exempt",
+            "J6T": "Salary Exempt",
+            "@HR": "Terminated",
+            "J68": "Retired with Insurance"
+         }
+      },
+      "2": {
+         "header_title": "SSNName",
+         "action": "concatenate",
+         "based_on": ["A", "D" ],
+         "join_string": "_"
+      }
+   }
+}
+
+
+      

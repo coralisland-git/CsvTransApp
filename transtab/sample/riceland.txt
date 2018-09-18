@@ -1,0 +1,76 @@
+delete row 1
+
+delete row 1
+
+dates = 'Birth Date', 'Hire Date', 'Job Termination Date', 'Job Rehire Date' 
+
+drop
+
+delete-duplicate-rows 
+
+rename 'SSN' as 'Employee SSN'
+
+delete 'File Number'
+
+rename 'Employee ID' as 'EID'
+
+do validate_phone_number on 'Phone Number'
+
+do validate_number on 'Payroll Frequency'
+
+clear 'Location Code (Work)'
+
+clear 'Hourly Rate'
+
+rename 'Job Termination Date' as 'Termination Date'
+
+replace 'Employee Status' 
+{
+	'Active': 'A',
+	'Terminated': 'T',
+	'Leave of Absence': 'L',
+	'Inactive': 'I'
+} case-insensitive default 'null'
+
+clear 'Job Information Effective Date'
+
+delete 'Reason Code'
+delete 'Action/Reason Description'	
+delete 'Action/Reasons Effective Date'
+delete 'Job Action'
+delete 'Full-Time/Part-Time'
+
+cutpaste 'Pay Group' to 'Department Code'
+
+new col 'Job Class'
+copy 'Department Code' to 'Job Class'
+replace 'Job Class'
+{
+	'J67': 'Hourly',
+	'J69': 'Hourly',
+	'SG6': 'Salary Non-Exempt',
+	'J66': 'Salary Exempt',
+	'J6T': 'Salary Exempt',
+	'@HR': 'Terminated',
+	'J68': 'Retired with Insurance'
+} default 'null'
+
+copy 'Payroll Frequency' to 'Pay Group'
+replace 'Pay Group'
+{
+	'24': 'Semi-monthly',
+	'52': 'Weekly'
+} default 'null'
+
+do validate_ssn on 'Employee SSN'
+
+concatenate 'Mailing Address Line 1', 'Mailing Address Line 2', 
+'Mailing Address City',	'Mailing Address State', 'Mailing Address ZIP/Postal' and
+store in 'Complete Address' using ', '
+
+do set_hire_date
+delete 'Job Rehire Date'
+
+sum-col-and-delete-duplicate-rows sum 'Annual Rate' unique 'Employee SSN'
+
+delete-rows-by-column-val col 'First Name' val 'John'

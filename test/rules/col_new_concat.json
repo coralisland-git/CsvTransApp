@@ -1,0 +1,11 @@
+{
+   "has_header_row": true,
+   "new_columns": {
+      "1": {
+         "header_title": "ItemStocked",
+         "action": "concatenate",
+         "based_on": ["A", "C" ],
+         "join_string": "-"
+      }
+   }
+}

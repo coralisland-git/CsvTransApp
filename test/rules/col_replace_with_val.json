@@ -1,0 +1,14 @@
+{
+   "has_header_row": true,
+   "columns":{
+	    "A": {
+	        "action": "replace",
+	        "with": {
+	        	"Whee": "WH",
+	            "Doo": "DO",
+	            "Engi": "EN",
+	            "Tota": "TO"
+	        }
+	    }
+    }
+}

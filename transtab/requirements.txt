@@ -1,0 +1,4 @@
+tablib
+openpyxl==2.4.9
+pyparsing
+maya

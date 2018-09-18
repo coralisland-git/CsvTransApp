@@ -1,0 +1,9 @@
+{
+   "has_header_row": true,
+   "columns":{
+	    "A": {
+	        "action": "cutpaste",
+	        "from": "B"
+	    }
+    }
+}

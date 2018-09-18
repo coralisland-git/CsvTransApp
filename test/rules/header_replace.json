@@ -1,0 +1,13 @@
+{
+   "has_header_row": true,
+   "header_rows": {
+      "A": {
+         "action": "replace",
+         "with": "Item name"
+      },
+      "D": {
+         "action": "replace",
+         "with": "Shipped date"
+      }
+   }
+}

@@ -1,0 +1,15 @@
+{
+   "has_header_row": true,
+   "columns":{
+	    "A": {
+	        "action": "replace",
+	        "based_on": "B",
+			"with": {
+	            "Wheel": "WH",
+	            "Door": "DO",
+	            "Engine": "EN",
+	            "Totals": "TO"
+			}
+	    }
+    }
+}

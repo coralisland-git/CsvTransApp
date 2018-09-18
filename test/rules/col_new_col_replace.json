@@ -1,0 +1,16 @@
+{
+   "has_header_row": true,
+   "new_columns": {
+      "1": {
+         "header_title": "Item Code",
+         "based_on": "A",
+         "action": "replace",
+         "with": {
+            "Wheel": "WH",
+            "Door": "DO",
+            "Engine": "EN",
+            "Totals": "TO"
+         }
+      }
+   }
+}
